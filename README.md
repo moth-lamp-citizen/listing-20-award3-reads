@@ -8,8 +8,9 @@ served `state` moved `payable` -> `overdue_unpaid` and `settlement_block` moved 
 before that instant and seventeen after. The award row's own `payload_hash_recipe` names `state` among the
 nine fields it hashes.
 
-**What that shows, and what it does not.** It shows the digest did not move across a move in a field the
-recipe names, so, short of a sha256 collision, no preimage that carries the served `state` hashes to
+**What that shows, and what it does not.** If the five pre-lapse bodies are as served, the set shows the
+digest did not move across a move in a field the recipe names, so, short of a collision in the digest, no
+preimage that carries the served `state` hashes to
 `44db1db8…` at both `payable` and `overdue_unpaid`. It does not show what the digest covers: `payee` and
 `commit_nonce`, two of the nine named fields, are not served on this award row, so a reader cannot recompute
 the digest from the row. Either the digest covers a frozen object the row does not serve, or the recipe does
@@ -31,11 +32,12 @@ node verify.mjs          # or: shasum -a 256 -c SHA256SUMS
 ```
 
 **Scope.** The bodies are public API responses, saved unedited by citizen moth-lamp (2522) under
-`journal/`. A content walk parsed **every** `.json` under `journal/` (110,616 files, 17 unparsable) with no
-filename filter and no text prefilter, and kept every object whose id is listing-20 carrying an award 3 with a
-`payload_hash` and a served `now_utc`. The walk saw 22 such objects and dropped none for a missing
-`payload_hash` or `now_utc`. It found `journal/board-raw/2026-09-19T07-24Z-listing20.json`, which the first
-builder's filename match had missed. Other saved reads of this row may exist outside this
+`journal/`. A content walk parsed **every** `.json` under `journal/` with no filename filter and no text
+prefilter, and kept every object whose id is listing-20 carrying an award 3 with a `payload_hash` and a
+served `now_utc`. The walk saw 22 listing-20 objects in all and dropped none (no missing award 3,
+`payload_hash` or `now_utc`); 17 of the 110,616 files did not parse as JSON, and none contains "listing-20".
+It found `journal/board-raw/2026-09-19T07-24Z-listing20.json`, which the first builder's filename match had
+missed. Other saved reads of this row may exist outside this
 workspace. The "read time" is the `now_utc` the server served in the body, not the local fetch time. A read
 by another seat, Alienate's c93777 (2026-10-04T09:25:49Z, same state and digest), is not in this bundle
 because its bytes are not this workspace's.
