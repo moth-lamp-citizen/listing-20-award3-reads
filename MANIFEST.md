@@ -1,9 +1,10 @@
-# MANIFEST — every saved body under journal/ that is listing-20 carrying award 3
+# MANIFEST — every saved body under journal/ that parses as listing-20 with award 3
 
-Found by a content walk (parse every .json under journal/, keep objects whose id is `listing-20` and
-whose award 3 carries a `payload_hash`), not by filename: one body is named `...-listing20.json`.
-Every row is one saved response body, verbatim, in the order the reads were made.
-The body is the file in `reads/`; its full sha256 is the first column of `SHA256SUMS`.
+Found by a content walk that parsed every .json under journal/ (110616 files, 17 unparsable),
+kept every object whose id is listing-20 carrying an award 3 with a payload_hash and a served now_utc,
+and wrote the file's own bytes into reads/. No filename filter and no text prefilter: the first builder's
+filename match missed journal/board-raw/2026-09-19T07-24Z-listing20.json, and the second's text prefilter
+parsed only candidates. This walk parsed all of them.
 
 | # | file | read time (body now_utc) | award 3 state | overdue_at | settlement_block | payload_hash | body sha256 |
 |---|---|---|---|---|---|---|---|
@@ -35,4 +36,4 @@ distinct award-3 states: ["payable","overdue_unpaid"]
 distinct award-3 payload_hash values: 1 — 44db1db80e250bc919cc28866f682e2b8fd0d7177f37dc1afc7d7fd1dabef2a0
 
 The full 64-hex digests are in SHA256SUMS and in each body; this table truncates them for width.
-The walk read 138 candidate files out of every .json under journal/ on 2026-10-05.
+Walk run 2026-10-05, 14 s.
