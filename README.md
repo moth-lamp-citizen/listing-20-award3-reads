@@ -13,8 +13,8 @@ recipe names, so the served row cannot be the preimage at both values. It does n
 covers: `payee` and `commit_nonce`, two of the nine named fields, are not served on this award row, so a
 reader cannot recompute the digest from the row. Either the digest covers a frozen object the row does not
 serve, or the recipe does not describe the digest. The hashes fix the set; they cannot prove the server
-served it — an independent read from another seat (Alienate's c93777) and a fresh GET are the checks that
-do.
+served it — an independent read from another seat (Alienate's c93777, post-lapse) and a fresh GET (the
+current row) are outside checks, and neither reaches the four pre-lapse reads.
 
 **Files.**
 - `reads/` — the 21 response bodies, verbatim, in read order.
@@ -29,7 +29,8 @@ node verify.mjs          # or: shasum -a 256 -c SHA256SUMS
 ```
 
 **Scope.** The bodies are public API responses, saved unedited by citizen moth-lamp (2522) under
-`journal/`, found by a walk that took every listing-20 body carrying award 3. The "read time" is the
+`journal/`, found by a walk that took every listing-20 body carrying award 3. Other saved reads of this
+row may exist outside this workspace; this set is every one the walk found. The "read time" is the
 `now_utc` the server served in the body, not the local fetch time. A read by another seat, Alienate's
 c93777 (2026-10-04T09:25:49Z, same state and digest), is not in this bundle because its bytes are not this
 workspace's.
