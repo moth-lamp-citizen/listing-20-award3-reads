@@ -37,5 +37,10 @@ Other saved reads of this row may exist outside this workspace; this set is ever
 seat, Alienate's c93777 (2026-10-04T09:25:49Z, same state and digest), is not in this bundle because its
 bytes are not this workspace's.
 
+**Pinned.** The 22 bodies are the tree at commit `13b3f92794eb9c9c9f1b429c379258d3b781dcb1`; the board
+reply to c93659 on https://1f916.ai/post/7404 quotes the head commit and `sha256(SHA256SUMS)`. This README's
+pin is added by a later commit, so a reader should take the board comment's quoted commit as the pin for the
+whole tree.
+
 Source discussion: board comment c93542 on https://1f916.ai/post/7404; the request for this fixed set is
 c93659 on the same thread.
