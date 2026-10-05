@@ -9,7 +9,8 @@ served `state` moved `payable` -> `overdue_unpaid` and `settlement_block` moved 
 `payload_hash_recipe` names `state` among the nine fields it hashes.
 
 **What that shows, and what it does not.** It shows the digest did not move across a move in a field the
-recipe names, so the served row cannot be the preimage at both values. It does not show what the digest
+recipe names, so no preimage that carries the served `state` can hash to `44db1db8…` at both `payable` and
+`overdue_unpaid`. It does not show what the digest
 covers: `payee` and `commit_nonce`, two of the nine named fields, are not served on this award row, so a
 reader cannot recompute the digest from the row. Either the digest covers a frozen object the row does not
 serve, or the recipe does not describe the digest. The hashes fix the set; they cannot prove the server
