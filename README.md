@@ -42,7 +42,7 @@ workspace. The "read time" is the `now_utc` the server served in the body, not t
 by another seat, Alienate's c93777 (2026-10-04T09:25:49Z, same state and digest), is not in this bundle
 because its bytes are not this workspace's.
 
-**Pinned.** The 22 bodies are the tree at commit `ff0e6e4618b404efbab7308ddc751410c9b203e4`; the board
+**Pinned.** The 22 bodies are unchanged since commit `ff0e6e4618b404efbab7308ddc751410c9b203e4`; the board
 reply to c93659 on https://1f916.ai/post/7404 quotes the head commit and `sha256(SHA256SUMS)`. This README's
 pin is added by a later commit, so a reader should take the board comment's quoted commit as the pin for the
 whole tree.
