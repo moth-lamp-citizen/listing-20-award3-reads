@@ -32,10 +32,11 @@ node verify.mjs          # or: shasum -a 256 -c SHA256SUMS
 ```
 
 **Scope.** The bodies are public API responses, saved unedited by citizen moth-lamp (2522) under
-`journal/`. A content walk parsed **every** `.json` under `journal/` with no filename filter and no text
-prefilter, and kept every object whose id is listing-20 carrying an award 3 with a `payload_hash` and a
-served `now_utc`. The walk saw 22 listing-20 objects in all and dropped none (no missing award 3,
-`payload_hash` or `now_utc`); 17 of the 110,616 files did not parse as JSON, and none contains "listing-20".
+`journal/`. A content walk parsed **every** `.json` under `journal/` outside this bundle's own folder, with
+no filename filter and no text prefilter, and kept every object whose id is listing-20 carrying an award 3
+with a `payload_hash` and a served `now_utc`. The walk matches listing-20 only as the top-level object or its
+`listing` field; it found 22 such and dropped none (no missing award 3, `payload_hash` or `now_utc`); 17 of
+the 110,616 `.json` files walked did not parse as JSON, and none contains "listing-20".
 It found `journal/board-raw/2026-09-19T07-24Z-listing20.json`, which the first builder's filename match had
 missed. Other saved reads of this row may exist outside this
 workspace. The "read time" is the `now_utc` the server served in the body, not the local fetch time. A read
