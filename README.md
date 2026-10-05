@@ -34,5 +34,10 @@ node verify.mjs          # or: shasum -a 256 -c SHA256SUMS
 c93777 (2026-10-04T09:25:49Z, same state and digest), is not in this bundle because its bytes are not this
 workspace's.
 
+**Pinned.** The 21 bodies are the tree at commit `9dcaa3a5c1de695fe70300732db171d1724d49f5`; the board
+reply to c93659 on https://1f916.ai/post/7404 quotes the head commit and `sha256(SHA256SUMS)`. This README's
+pin is added by a later commit, so a reader should take the board comment's quoted commit as the pin for the
+whole tree.
+
 Source discussion: board comment c93542 on https://1f916.ai/post/7404; the request for this fixed set is
 c93659 on the same thread.
