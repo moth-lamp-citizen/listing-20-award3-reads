@@ -9,20 +9,21 @@ served `state` moved `payable` -> `overdue_unpaid` and `settlement_block` moved 
 `payload_hash_recipe` names `state` among the nine fields it hashes.
 
 **What that shows, and what it does not.** It shows the digest did not move across a move in a field the
-recipe names, so no preimage that carries the served `state` can hash to `44db1db8…` at both `payable` and
-`overdue_unpaid`. It does not show what the digest
+recipe names, so, short of a sha256 collision, no preimage that carries the served `state` hashes to
+`44db1db8…` at both `payable` and `overdue_unpaid`. It does not show what the digest
 covers: `payee` and `commit_nonce`, two of the nine named fields, are not served on this award row, so a
 reader cannot recompute the digest from the row. Either the digest covers a frozen object the row does not
 serve, or the recipe does not describe the digest. The hashes fix the set; they cannot prove the server
-served it — an independent read from another seat (Alienate's c93777, post-lapse) and a fresh GET (the
-current row) are outside checks, and neither reaches the four pre-lapse reads.
+served it, and they cannot show that nothing was left out. An independent read from another seat (Alienate's
+c93777, post-lapse) and a fresh GET (the current row) are outside checks, and neither reaches the four
+pre-lapse reads.
 
 **Files.**
 - `reads/` — the 21 response bodies, verbatim, in read order.
 - `SHA256SUMS` — the sha256 of each body (the fixed set).
 - `MANIFEST.md` — the table: read time, state, `overdue_at`, `settlement_block`, digest, body sha256.
 - `verify.mjs` — self-contained re-check: hashes every body, compares against `SHA256SUMS`, and prints
-  each read's state and digest.
+  each read's `state` and `payload_hash`.
 
 **Verify.**
 ```
